@@ -27,29 +27,16 @@
   
 </head>
 <body>
-  
-  <script>
-function fullscreen() {
-    if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-        (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-        if (document.documentElement.requestFullScreen) {
-            document.documentElement.requestFullScreen();
-        } else if (document.documentElement.mozRequestFullScreen) {
-            document.documentElement.mozRequestFullScreen();
-        } else if (document.documentElement.webkitRequestFullScreen) {
-            document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-        }
-    } else {
-        if (document.cancelFullScreen) {
-            document.cancelFullScreen();
-        } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-        } else if (document.webkitCancelFullScreen) {
-            document.webkitCancelFullScreen();
-        }
-    }
+  <script>function fullscreen() {
+  var elem = document.documentElement;
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    elem.msRequestFullscreen();
+  }
 </script>
-  
   <section data-bs-version="5.1" class="menu menu2 cid-sFF0ciwnEL" once="menu" id="menu2-0">    
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
         <div class="container">
