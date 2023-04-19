@@ -26,9 +26,11 @@
 
   
 </head>
-<body onclick="requestFullScreen(document.body)>
-               
-               <script>
+<body>
+ <div style="border:1px solid red;height:100px;width:100px;background-color:red;" onclick="requestFullScreen(document.body)"></div>
+    <div style="border:1px solid red;height:100px;width:100px;background-color:blue;" onclick="exitFullScreen(document.body)"></div>
+
+    <script>
         function requestFullScreen(element) {
             // Supports most browsers and their versions.
             var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullscreen;
@@ -38,7 +40,7 @@
             } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
                 var wscript = new ActiveXObject("WScript.Shell");
                 if (wscript !== null) {
-                    wscript.SendKeys("{F2}");
+                    wscript.SendKeys("{F11}");
                 }
             }
         }
@@ -62,24 +64,7 @@
         }
 
     </script>
-      <script>
-        function fullscreen() {
-  var elem = document.documentElement;
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) {
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) {
-    elem.msRequestFullscreen();
-  }
-
-
-
-    </script>
-
-
-  <section data-bs-version="5.1" class="menu menu2 cid-sFF0ciwnEL" once="menu" id="menu2-0">
-    
+  <section data-bs-version="5.1" class="menu menu2 cid-sFF0ciwnEL" once="menu" id="menu2-0">    
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
         <div class="container">
             <div class="navbar-brand">
@@ -124,7 +109,7 @@
                         <strong>
 </strong><div><strong><br></strong></div><div><strong>Hi, I'm Jessica Brown and I'm a Designer</strong></div></h1>
                     <p class="mbr-text mbr-fonts-style display-7">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque malesuada non magna eget mollis. Quisque vehicula, lorem quis sollicitudin mollis, elit enim aliquet lorem.&nbsp;</p>
-                    <div class="mbr-section-btn mt-3"><a class="btn btn-primary display-7" href="index.html#gallery5-3">My Jobs</a> <a class="btn btn-secondary display-7" href="index.html#form4-6">Contacts</a></div>
+                    <div class="btn btn-primary display-7 mbr-section-btn mt-3" onclick="requestFullScreen(document.body)">My Jobs</div>
                 </div>
             </div>
         </div>
