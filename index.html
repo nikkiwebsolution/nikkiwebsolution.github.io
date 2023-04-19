@@ -27,43 +27,29 @@
   
 </head>
 <body>
- <div style="border:1px solid red;height:100px;width:100px;background-color:red;" onclick="requestFullScreen(document.body)"></div>
-    <div style="border:1px solid red;height:100px;width:100px;background-color:blue;" onclick="exitFullScreen(document.body)"></div>
-
-    <script>
-        function requestFullScreen(element) {
-            // Supports most browsers and their versions.
-            var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullscreen;
-
-            if (requestMethod) { // Native full screen.
-                requestMethod.call(element);
-            } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
-                var wscript = new ActiveXObject("WScript.Shell");
-                if (wscript !== null) {
-                    wscript.SendKeys("{F11}");
-                }
-            }
+  
+  <script>
+function fullscreen() {
+    if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+        (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+        if (document.documentElement.requestFullScreen) {
+            document.documentElement.requestFullScreen();
+        } else if (document.documentElement.mozRequestFullScreen) {
+            document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullScreen) {
+            document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
         }
-
-    </script>
-
-    <script>
-        function exitFullScreen() {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            }
-            else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
-            else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            }
-            else if (document.webkitCancelFullScreen) {
-                document.webkitCancelFullScreen();
-            }
+    } else {
+        if (document.cancelFullScreen) {
+            document.cancelFullScreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
         }
-
-    </script>
+    }
+</script>
+  
   <section data-bs-version="5.1" class="menu menu2 cid-sFF0ciwnEL" once="menu" id="menu2-0">    
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
         <div class="container">
@@ -109,7 +95,7 @@
                         <strong>
 </strong><div><strong><br></strong></div><div><strong>Hi, I'm Jessica Brown and I'm a Designer</strong></div></h1>
                     <p class="mbr-text mbr-fonts-style display-7">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque malesuada non magna eget mollis. Quisque vehicula, lorem quis sollicitudin mollis, elit enim aliquet lorem.&nbsp;</p>
-                    <div class="btn btn-primary display-7 mbr-section-btn mt-3" onclick="requestFullScreen(document.body)">My Jobs</div>
+                    <button class="btn btn-primary display-7" onclick="fullscreen()">My Jobs</div>
                 </div>
             </div>
         </div>
